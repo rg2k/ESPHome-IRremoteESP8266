@@ -42,14 +42,10 @@ namespace esphome
             return traits;
         }
 
-        void FujitsuClimate::control(const climate::ClimateCall &call)
-        {
-            climate_ir::ClimateIR::control(call);
-            this->apply_state();
-        }
-
         void FujitsuClimate::transmit_state()
         {
+            this->apply_state();
+
             uint8_t *message = this->ac_.getRaw();
             uint8_t length = this->ac_.getStateLength();
 

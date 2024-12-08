@@ -30,7 +30,6 @@ namespace esphome
             void set_model(const Model model);
             void setup() override;
             climate::ClimateTraits traits() override;
-            void control(const climate::ClimateCall &call) override;
 
         protected:
             void transmit_state() override;

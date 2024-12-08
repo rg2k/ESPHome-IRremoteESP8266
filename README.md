@@ -12,8 +12,12 @@ It does NOT support receive mode.
 external_components:
   - source:
       type: git
-      path: https://github.com/mistic100/ESPHome-IRremoteESP8266
+      url: https://github.com/mistic100/ESPHome-IRremoteESP8266
     components: [ fujitsu ]
+
+remote_transmitter:
+  pin: GPIOXX
+  carrier_duty_percent: 50%
 
 climate:
   - platform: fujitsu
@@ -29,6 +33,8 @@ climate:
 - ARREB1E
 - ARREW4E
 - ARRY4
+
+It supports other options of [climate_ir](https://esphome.io/components/climate/climate_ir.html) like `sensor` and `transmitter_id`.
 
 ## TODO
 
