@@ -8,6 +8,16 @@ It does NOT support receive mode.
 
 ## Usage
 
+> Only Arduino Framework is supported
+
+```yaml
+esp32:
+  framework:
+    type: arduino
+```
+
+### Fujitsu
+
 ```yaml
 external_components:
   - source:
@@ -36,8 +46,21 @@ climate:
 
 It supports other options of [climate_ir](https://esphome.io/components/climate/climate_ir.html) like `sensor` and `transmitter_id`.
 
-## TODO
+### Control fan direction
 
-- [ ] Make a generic class for the communication between ClimateIR and IRremoteESP8266
-- [ ] Implements IR receiver mode
-- [ ] Add [more platforms](https://github.com/crankyoldgit/IRremoteESP8266/blob/master/SupportedProtocols.md)
+You can call the `step_vertical()` and `step_horizontal()` (if supported) methods on the climate controller.
+
+```yaml
+button:
+  - platform: template
+    name: 'Step vertical'
+    on_press:
+      then:
+        - lambda: |-
+            id(my_climate).step_vertical();
+```
+
+## Changelog
+
+- **2025.06.04**: Add `step_vertical()` and `step_horizontal()` methods to Fujitsu platform
+- **2025.05.22**: Compatibility with ESPHome 2025.5

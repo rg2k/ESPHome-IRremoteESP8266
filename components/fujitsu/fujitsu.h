@@ -28,11 +28,18 @@ namespace esphome
                             {climate::CLIMATE_SWING_OFF, climate::CLIMATE_SWING_VERTICAL}) {}
 
             void set_model(const Model model);
+            
             void setup() override;
             climate::ClimateTraits traits() override;
 
+            void step_horizontal();
+            void step_vertical();
+
         protected:
             void transmit_state() override;
+
+        private:
+            void send();
             void apply_state();
 
             IRFujitsuAC ac_ = IRFujitsuAC(255); // pin is not used

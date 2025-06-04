@@ -45,7 +45,32 @@ namespace esphome
         void FujitsuClimate::transmit_state()
         {
             this->apply_state();
+            this->send();
+        }
 
+        void FujitsuClimate::step_horizontal()
+        {
+            if (this->traits().supports_swing_mode(climate::CLIMATE_SWING_HORIZONTAL))
+            {
+                this->ac_.stepHoriz();
+                ESP_LOGI(TAG, this->ac_.toString().c_str());
+                this->send();
+            }
+            else
+            {
+                ESP_LOGW(TAG, "Model does not support horizontal swing");
+            }
+        }
+
+        void FujitsuClimate::step_vertical()
+        {
+            this->ac_.stepVert();
+            ESP_LOGI(TAG, this->ac_.toString().c_str());
+            this->send();
+        }
+
+        void FujitsuClimate::send()
+        {
             uint8_t *message = this->ac_.getRaw();
             uint8_t length = this->ac_.getStateLength();
 
