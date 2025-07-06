@@ -6,6 +6,10 @@ For now only some protocols are implemented, please open an issue or an PR to ad
 
 It does NOT support receive mode.
 
+**Supported platforms:**
+- [Fujitsu](#fujitsu)
+- [Panasonic](#panasonic)
+
 
 ## Usage
 
