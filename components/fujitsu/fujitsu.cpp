@@ -53,7 +53,7 @@ namespace esphome
             if (this->traits().supports_swing_mode(climate::CLIMATE_SWING_HORIZONTAL))
             {
                 this->ac_.stepHoriz();
-                ESP_LOGI(TAG, this->ac_.toString().c_str());
+                ESP_LOGI(TAG, "%s", this->ac_.toString().c_str());
                 this->send();
             }
             else
@@ -155,7 +155,7 @@ namespace esphome
                 this->ac_.on();
             }
 
-            ESP_LOGI(TAG, this->ac_.toString().c_str());
+            ESP_LOGI(TAG, "%s", this->ac_.toString().c_str());
         }
 
     } // namespace fujitsu_general

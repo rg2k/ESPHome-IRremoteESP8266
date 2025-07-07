@@ -35,7 +35,6 @@ namespace esphome
         void ElectraClimate::send()
         {
             uint8_t *message = this->ac_.getRaw();
-            const uint16_t length = 13; // from kElectraAcStateLength
 
             sendGeneric(
                 this->transmitter_,
@@ -43,7 +42,7 @@ namespace esphome
                 kElectraAcBitMark, kElectraAcOneSpace,
                 kElectraAcBitMark, kElectraAcZeroSpace,
                 kElectraAcBitMark, kElectraAcMessageGap,
-                message, length,
+                message, kElectraAcStateLength,
                 38000
             );
         }
@@ -119,7 +118,7 @@ namespace esphome
                 this->ac_.on();
             }
 
-            ESP_LOGI(TAG, "State: %s", LOG_STR_ARG(this->ac_.toString().c_str()));
+            ESP_LOGI(TAG, "%s", this->ac_.toString().c_str());
         }
     } // namespace electra
 } // namespace esphome

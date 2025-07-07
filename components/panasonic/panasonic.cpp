@@ -49,7 +49,6 @@ namespace esphome
             this->apply_state();
 
             uint8_t *message = this->ac_.getRaw();
-            uint8_t length = kPanasonicAcStateLength;
 
             sendGeneric(
                 this->transmitter_,
@@ -57,7 +56,7 @@ namespace esphome
                 kPanasonicBitMark, kPanasonicOneSpace,
                 kPanasonicBitMark, kPanasonicZeroSpace,
                 kPanasonicBitMark, kPanasonicAcSectionGap,
-                message, length,
+                message, kPanasonicAcSection1Length,
                 kPanasonicFreq
             );
             sendGeneric(
@@ -67,7 +66,7 @@ namespace esphome
                 kPanasonicBitMark, kPanasonicZeroSpace,
                 kPanasonicBitMark, kPanasonicAcMessageGap,
                 message + kPanasonicAcSection1Length,
-                length - kPanasonicAcSection1Length,
+                kPanasonicAcStateLength - kPanasonicAcSection1Length,
                 kPanasonicFreq
             );
         }
@@ -146,7 +145,7 @@ namespace esphome
                 this->ac_.on();
             }
 
-            ESP_LOGI(TAG, this->ac_.toString().c_str());
+            ESP_LOGI(TAG, "%s", this->ac_.toString().c_str());
         }
 
     } // namespace panasonic_general
