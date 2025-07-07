@@ -7,35 +7,41 @@ For now only some protocols are implemented, please open an issue or an PR to ad
 It does NOT support receive mode.
 
 **Supported platforms:**
-- [Fujitsu](#fujitsu)
-- [Panasonic](#panasonic)
-- [Electra](#Electra)
+- [fujitsu](#fujitsu)
+- [panasonic](#panasonic)
+- [electra](#electra)
 
 ## Usage
 
-> Only Arduino Framework is supported
+_Note:_ Only Arduino Framework is supported
 
 ```yaml
 esp32:
   framework:
     type: arduino
-```
 
-It supports other options of [climate_ir](https://esphome.io/components/climate/climate_ir.html) like `sensor` and `transmitter_id`.
-
-### Fujitsu
-
-```yaml
 external_components:
   - source:
       type: git
       url: https://github.com/mistic100/ESPHome-IRremoteESP8266
-    components: [ fujitsu, ir_remote_base ]
+    components: [ ir_remote_base, <platform_name> ]
 
 remote_transmitter:
   pin: GPIOXX
   carrier_duty_percent: 50%
 
+climate:
+  - platform: <platform_name>
+    name: 'Living Room AC'
+```
+
+Replace `<platform_name>` by the name of one of the platforms available.
+
+It supports other options of [climate_ir](https://esphome.io/components/climate/climate_ir.html) like `sensor` and `transmitter_id`.
+
+### fujitsu
+
+```yaml
 climate:
   - platform: fujitsu
     model: ARREB1E
@@ -65,21 +71,9 @@ button:
             id(my_climate).step_vertical();
 ```
 
-### Panasonic
-
-_untested_
+### panasonic
 
 ```yaml
-external_components:
-  - source:
-      type: git
-      url: https://github.com/mistic100/ESPHome-IRremoteESP8266
-    components: [ panasonic, ir_remote_base ]
-
-remote_transmitter:
-  pin: GPIOXX
-  carrier_duty_percent: 50%
-
 climate:
   - platform: panasonic
     model: DKE
@@ -95,21 +89,11 @@ climate:
 - CKP
 - RKR
 
-### Electra
+### electra
 
-Also known as Aux
+Also known as Aux.
 
 ```yaml
-external_components:
-  - source:
-      type: git
-      url: https://github.com/mistic100/ESPHome-IRremoteESP8266
-    components: [ electra, ir_remote_base ]
-
-remote_transmitter:
-  pin: GPIOXX
-  carrier_duty_percent: 50%
-
 climate:
   - platform: electra
     name: 'Living Room AC'
