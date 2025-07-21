@@ -101,6 +101,7 @@ climate:
 
 ## Changelog
 
+- **2025.07.21**: Compatibility with ESPHome 2025.7
 - **2025.07.07**: Add Electra platform
 - **2025.07.06**: Add Panasonic platform
 - **2025.06.04**: Add `step_vertical()` and `step_horizontal()` methods to Fujitsu platform
