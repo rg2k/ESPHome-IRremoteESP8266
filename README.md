@@ -40,7 +40,7 @@ Replace `<platform_name>` by the name of one of the platforms available.
 
 It supports other options of [climate_ir](https://esphome.io/components/climate/climate_ir.html) like `sensor` and `transmitter_id`.
 
-### fujitsu
+## fujitsu
 
 ```yaml
 climate:
@@ -72,7 +72,7 @@ button:
             id(my_climate).step_vertical();
 ```
 
-### fujitsu-264
+## fujitsu-264
 
 This platform implements the special Fujitsu protocol of the `AR-RLB2J` remote.
 
@@ -111,7 +111,7 @@ button:
             id(my_climate).set_fan_angle(1);
 ```
 
-### panasonic
+## panasonic
 
 ```yaml
 climate:
@@ -129,7 +129,7 @@ climate:
 - CKP
 - RKR
 
-### electra
+## electra
 
 Also known as Aux.
 
