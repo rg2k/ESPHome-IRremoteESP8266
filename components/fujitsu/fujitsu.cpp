@@ -65,7 +65,7 @@ namespace esphome
         void FujitsuClimate::step_vertical()
         {
             this->ac_.stepVert();
-            ESP_LOGI(TAG, this->ac_.toString().c_str());
+            ESP_LOGI(TAG, "%s", this->ac_.toString().c_str());
             this->send();
         }
 
