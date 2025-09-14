@@ -30,7 +30,7 @@ namespace esphome
             void send();
             void apply_state();
 
-            IRElectraAc ac_ = IRElectraAc(255); // pin is not used
+            IRSamsungAc ac_ = IRSamsungAc(255); // pin is not used
         };
 
     } // namespace samsung
