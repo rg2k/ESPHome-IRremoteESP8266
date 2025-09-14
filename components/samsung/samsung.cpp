@@ -39,9 +39,6 @@ namespace esphome
         {
             uint8_t *message = this->ac_.getRaw();
 
-            mark(kSamsungAcHdrMark);
-            space(kSamsungAcHdrSpace);
-
             sendGeneric(
                 this->transmitter_,
                 kSamsungAcSectionMark, kSamsungAcSectionSpace,
@@ -52,7 +49,12 @@ namespace esphome
                 38000
             );
 
-            space(kDefaultMessageGap - kSamsungAcSectionGap);
+        }
+        void SamsungClimate::set_display()
+        {
+            this->ac_.setDisplay(false);
+            ESP_LOGI(TAG, "Set Display");
+            this->send();
         }
 
         void SamsungClimate::apply_state()
