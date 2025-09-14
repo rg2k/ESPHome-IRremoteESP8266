@@ -41,12 +41,12 @@ namespace esphome
 
             sendGeneric(
                 this->transmitter_,
-                kSamsungHdrMark, kSamsungHdrSpace, 
-                kSamsungBitMark, kSamsungOneSpace, 
-                kSamsungBitMark, kSamsungZeroSpace,
-                kSamsungBitMark, kSamsungMinGap
-                message, kSamsungMinMessageLength,
-                38
+                kSamsungAcSectionMark, kSamsungAcSectionSpace,
+                kSamsungAcBitMark, kSamsungAcOneSpace, 
+                kSamsungAcBitMark, kSamsungAcZeroSpace, 
+                kSamsungAcBitMark, kSamsungAcSectionGap,
+                message, kSamsungAcSectionLength,
+                38000
             );
         }
 
