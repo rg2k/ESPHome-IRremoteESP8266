@@ -39,6 +39,9 @@ namespace esphome
         {
             uint8_t *message = this->ac_.getRaw();
 
+            mark(kSamsungAcHdrMark);
+            space(kSamsungAcHdrSpace);
+
             sendGeneric(
                 this->transmitter_,
                 kSamsungAcSectionMark, kSamsungAcSectionSpace,
@@ -48,6 +51,8 @@ namespace esphome
                 message, kSamsungAcSectionLength,
                 38000
             );
+
+            space(kDefaultMessageGap - kSamsungAcSectionGap);
         }
 
         void SamsungClimate::apply_state()
