@@ -50,7 +50,7 @@ namespace esphome
             );
         }
 
-        void ElectraClimate::apply_state()
+        void SamsungClimate::apply_state()
         {
             if (this->mode == climate::CLIMATE_MODE_OFF)
             {
